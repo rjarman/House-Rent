@@ -1,0 +1,28 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>rented</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div *ngIf="isNotNull">
+    <div *ngFor="let sameOwnersData of userData.ownerInfo">
+      <ion-card *ngIf="sameOwnersData.details.renterInfo.isChecked" (click)="presentModal(sameOwnersData)">
+        <img src="{{imageURL + sameOwnersData.details.imagePath[0]}}" alt="{{sameOwnersData.details.imagePath[0]}}" />
+        <ion-card-header>
+          <ion-card-subtitle> 
+            {{sameOwnersData.details.address.street}}, 
+            {{sameOwnersData.details.address.city}}, 
+            {{sameOwnersData.details.address.state}}-{{sameOwnersData.details.address.zip}}
+          </ion-card-subtitle>
+          <ion-card-title>{{sameOwnersData.personal.ownerName}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Number of Empty Rooms: {{sameOwnersData.details.houseInfo.emptyRoom}}</p>
+          <p>Price: {{sameOwnersData.details.houseInfo.price}}</p>
+          <p>Description: {{sameOwnersData.details.houseInfo.roomDetails}}</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

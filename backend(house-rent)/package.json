@@ -1,0 +1,24 @@
+{
+  "name": "house.rent.api",
+  "version": "1.0.0",
+  "description": "This API is for House-Rent application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:server": "nodemon server.js"
+  },
+  "author": "Rafsun Jany Arman",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "formidable": "^1.2.2",
+    "fs": "0.0.1-security",
+    "mongodb": "^3.5.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

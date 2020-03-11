@@ -1,0 +1,7 @@
+{
+  "name": "house-rent",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add New</ion-title>
+    <ion-button fill="clear" slot="start" class="back-button">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <ion-card>
+      <ion-card-header>
+        Owner Info
+      </ion-card-header>
+      <ion-card-content>
+        <div formGroupName="ownerInfo">
+          <ion-item>
+            <ion-label position="floating">Owner Name</ion-label>
+            <ion-input type="text" formControlName="ownerName" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Mobile 1</ion-label>
+            <ion-input type="text" formControlName="mobile1" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Mobile 2</ion-label>
+            <ion-input type="text" formControlName="mobile2"></ion-input>
+          </ion-item>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        House Info
+      </ion-card-header>
+      <ion-card-content>
+        <div formGroupName="houseInfo">
+          <ion-item>
+            <ion-label position="floating">Empty Room</ion-label>
+            <ion-input type="text" formControlName="emptyRoom" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Room Details</ion-label>
+            <ion-textarea type="text" formControlName="roomDetails" required></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Price</ion-label>
+            <ion-input type="text" formControlName="price" required></ion-input>
+          </ion-item>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-card>
+      <ion-card-header>
+        Address
+      </ion-card-header>
+      <ion-card-content>
+        <div formGroupName="address">
+          <ion-item>
+            <ion-label position="floating">Street</ion-label>
+            <ion-input type="text" formControlName="street" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">City</ion-label>
+            <ion-input type="text" formControlName="city" required></ion-input>
+          </ion-item>
+            
+          <ion-item>
+            <ion-label position="floating">State</ion-label>
+            <ion-input type="text" formControlName="state" required></ion-input>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label position="floating">Zip Code</ion-label>
+            <ion-input type="text" formControlName="zip" required></ion-input>
+          </ion-item>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        Renter Info
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-checkbox checked="false" formControlName="isChecked" color="secondary" slot="start" (click)="checkBox()" checked="{{checkedIt}}"></ion-checkbox>
+          <ion-label>Is this house rented ?</ion-label>
+        </ion-item>
+        
+        <div *ngIf="isRanted" formGroupName="renterInfo">
+          <ion-item>
+            <ion-label position="floating">Name</ion-label>
+            <ion-input type="text" formControlName="name" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Mobile</ion-label>
+            <ion-input type="text" formControlName="mobile" required></ion-input>
+          </ion-item>
+            
+          <ion-item>
+            <ion-label position="floating">Office Address</ion-label>
+            <ion-input type="text" formControlName="officeAddress" required></ion-input>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label position="floating">Permanent Address</ion-label>
+            <ion-input type="text" formControlName="permanentAddress" required></ion-input>
+          </ion-item>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        Images
+      </ion-card-header>
+      <ion-card-content>
+          <ion-input (change)="setImages($event)" type="file" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" multiple required></ion-input>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-grid *ngIf="isImage">
+      <ion-row>
+        <ion-col size="6" *ngFor="let image of imageArray">
+            <img src="{{imagePath + image}}">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+  <ng-template #notUpdate>
+    <ion-button expand="full" size="large" fill="solid" type="submit" [disabled]="!addForm.valid">Submit</ion-button>
+  </ng-template>
+    <ion-button *ngIf="isUpdate; else notUpdate" expand="full" size="large" fill="solid" type="submit" [disabled]="!addForm.valid">Update</ion-button>
+  </form>
+
+</ion-content>

@@ -1,0 +1,48 @@
+#search-bar:active, #search-bar:focus {
+    outline: 0;
+    border: none;
+    width: 100px;
+  }
+  
+  #menu-background {
+    // --background: url(a);
+    height: 169px;
+  }
+  
+  #menu-profile {
+    margin-left: 25px;
+    margin-top: 60px;
+  }
+
+  .drawer-btn {
+    color: black;
+    font-size: 100%;
+    padding-right: 100%;
+    --background: transparent;
+    --background-hover: transparent !important;
+    --ripple-color: transparent;
+    --color-activated: none;
+    outline: 0;
+  }
+
+  .drawer-btn-icon {
+    margin-right: 10px;
+  }
+
+  .drawer-text {
+    margin-left: 30px;
+    margin-top: 5px;
+    width: 100%;
+    color: snow;
+
+    .drawer-text-name {
+      font-weight: 900;
+    }
+
+    .drawer-text-email {
+      color: snow;
+      cursor: pointer;
+    }
+  }
+  
+  

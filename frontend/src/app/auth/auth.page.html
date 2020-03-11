@@ -1,0 +1,58 @@
+
+<ion-content style="overflow: hidden;">
+    <form [formGroup]="loginForm" (ngSubmit)="checkLogin()" *ngIf="isRegistered; else notRegistered">
+      <ion-card style="margin-top: 25vh;margin-bottom: 25vh;">
+      <ion-card>
+        <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Email Address</ion-label>
+              <ion-input type="text" formControlName="email" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password" formControlName="password" required></ion-input>
+            </ion-item>
+        </ion-card-content>
+      </ion-card>
+  
+      
+      <ion-button expand="full" size="large" fill="solid" type="submit" [disabled]="!loginForm.valid">Sign in</ion-button>
+      <p style="text-align: center;" (click)="toRegister()"><u>Go to register!</u></p>
+      </ion-card>
+    </form>
+    <ng-template #notRegistered>
+      <form [formGroup]="registerForm" (ngSubmit)="checkRegister()" enctype="multipart/form-data">
+        <ion-card style="margin-top: 15vh;margin-bottom: 15vh;">
+          <ion-card>
+            <ion-card-content>
+                <ion-item>
+                  <ion-label position="floating">User Name</ion-label>
+                  <ion-input type="text" formControlName="userName" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Email Address</ion-label>
+                  <ion-input type="email" formControlName="email" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Password</ion-label>
+                  <ion-input type="password" formControlName="password" required></ion-input>
+                </ion-item>
+            </ion-card-content>
+          </ion-card>
+      
+          <ion-card>
+            <ion-card-header>
+              Profile Photo
+            </ion-card-header>
+            <ion-card-content>
+                <ion-input (change)="setImages($event)" type="file" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required></ion-input>
+            </ion-card-content>
+          </ion-card>
+          
+        
+          <ion-button expand="full" size="large" fill="solid" type="submit" [disabled]="!registerForm.valid">Sign up</ion-button>
+          <p style="text-align: center;" (click)="toLogin()"><u>Go to login!</u></p>
+        </ion-card>
+      </form>
+    </ng-template>
+</ion-content>
