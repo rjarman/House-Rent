@@ -10,13 +10,8 @@ import { TabsPage } from './tabs.page';
 import { DetailsPage } from './details/details.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    TabsPageRoutingModule,
-  ],
+  imports: [CommonModule, FormsModule, IonicModule, TabsPageRoutingModule],
   declarations: [TabsPage, DetailsPage],
-  entryComponents: [DetailsPage]
+  entryComponents: [DetailsPage],
 })
 export class TabsPageModule {}

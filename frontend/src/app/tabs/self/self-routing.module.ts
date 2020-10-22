@@ -6,8 +6,8 @@ import { SelfPage } from './self.page';
 const routes: Routes = [
   {
     path: '',
-    component: SelfPage
-  }
+    component: SelfPage,
+  },
 ];
 
 @NgModule({

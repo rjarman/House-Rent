@@ -9,12 +9,7 @@ import { SelfPageRoutingModule } from './self-routing.module';
 import { SelfPage } from './self.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SelfPageRoutingModule
-  ],
-  declarations: [SelfPage]
+  imports: [CommonModule, FormsModule, IonicModule, SelfPageRoutingModule],
+  declarations: [SelfPage],
 })
 export class SelfPageModule {}

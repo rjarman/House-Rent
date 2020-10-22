@@ -10,40 +10,45 @@ const routes: Routes = [
     children: [
       {
         path: 'self',
-        loadChildren: () => import('./self/self.module').then( m => m.SelfPageModule)
+        loadChildren: () =>
+          import('./self/self.module').then((m) => m.SelfPageModule),
       },
       {
         path: 'others',
-        loadChildren: () => import('./others/others.module').then( m => m.OthersPageModule)
+        loadChildren: () =>
+          import('./others/others.module').then((m) => m.OthersPageModule),
       },
       {
         path: 'rented',
-        loadChildren: () => import('./rented/rented.module').then( m => m.RentedPageModule)
+        loadChildren: () =>
+          import('./rented/rented.module').then((m) => m.RentedPageModule),
       },
       {
         path: '',
         redirectTo: '/tabs/self',
-        pathMatch: 'full'
-      }
-    ]
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: 'details',
-    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+    loadChildren: () =>
+      import('./details/details.module').then((m) => m.DetailsPageModule),
   },
   {
     path: 'add/:sameOwnersData',
-    loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
+    loadChildren: () => import('./add/add.module').then((m) => m.AddPageModule),
   },
   {
     path: 'add',
     children: [
       {
         path: '',
-        loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
+        loadChildren: () =>
+          import('./add/add.module').then((m) => m.AddPageModule),
       },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({

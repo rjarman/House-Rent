@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
-import { OwnerInfo } from 'src/app/shared/ownerInfo';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,7 +8,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-
   isEmptyMobile2 = false;
   imagePath = environment.custom.IMAGE_URL;
 
@@ -17,34 +15,37 @@ export class DetailsPage implements OnInit {
     personal: {
       ownerName: '',
       mobile1: '',
-      mobile2: ''
+      mobile2: '',
     },
     details: {
-        imagePath: [''],
-        houseInfo: {
-            emptyRoom: '',
-            roomDetails: '',
-            price: ''
-        },
-        address: {
-            street: '',
-            city: '',
-            state: '',
-            zip: ''
-        },
+      imagePath: [''],
+      houseInfo: {
+        emptyRoom: '',
+        roomDetails: '',
+        price: '',
+      },
+      address: {
+        street: '',
+        city: '',
+        state: '',
+        zip: '',
+      },
+      renterInfo: {
+        isChecked: true,
         renterInfo: {
-            isChecked: true,
-            renterInfo: {
-                name: '',
-                mobile: '',
-                officeAddress: '',
-                permanentAddress: ''
-            }
-        }
-    }
+          name: '',
+          mobile: '',
+          officeAddress: '',
+          permanentAddress: '',
+        },
+      },
+    },
   };
 
-  constructor(private modalControl: ModalController, private navParams: NavParams) {
+  constructor(
+    private modalControl: ModalController,
+    private navParams: NavParams
+  ) {
     this.ownerDetails.personal.ownerName = this.navParams.data.personal.ownerName;
     this.ownerDetails.personal.mobile1 = this.navParams.data.personal.mobile1;
     this.ownerDetails.personal.mobile2 = this.navParams.data.personal.mobile2;
@@ -67,7 +68,7 @@ export class DetailsPage implements OnInit {
     if (this.ownerDetails.personal.mobile2 !== '') {
       this.isEmptyMobile2 = true;
     }
-   }
+  }
 
   ngOnInit() {
     // console.log(this.ownerDetails);
@@ -75,8 +76,7 @@ export class DetailsPage implements OnInit {
 
   dismissModal() {
     this.modalControl.dismiss({
-      dismissed: true
+      dismissed: true,
     });
   }
-
 }

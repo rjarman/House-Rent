@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TabsService } from 'src/app/services/tabs.service';
-import { HouseOwnersData } from 'src/app/shared/houseOwnersData';
+import { HouseOwnersData } from 'src/app/shared/types';
 import { environment } from 'src/environments/environment';
 import { ModalController } from '@ionic/angular';
 import { DetailsPage } from '../details/details.page';
@@ -11,23 +11,24 @@ import { DetailsPage } from '../details/details.page';
   styleUrls: ['./others.page.scss'],
 })
 export class OthersPage implements OnInit {
-
   public allData: HouseOwnersData[];
   public imageURL = environment.custom.IMAGE_URL;
 
-  constructor(private tabsService: TabsService, private modalController: ModalController) {
-    this.tabsService.allData.subscribe(res => {
+  constructor(
+    private tabsService: TabsService,
+    private modalController: ModalController
+  ) {
+    this.tabsService.allData.subscribe((res) => {
       this.allData = res;
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async presentModal(sameOwnersData) {
     const modal = await this.modalController.create({
       component: DetailsPage,
-      componentProps: sameOwnersData
+      componentProps: sameOwnersData,
     });
     return await modal.present();
   }

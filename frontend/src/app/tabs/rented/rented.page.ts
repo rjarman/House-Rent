@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { DetailsPage } from '../details/details.page';
-import { HouseOwnersData } from 'src/app/shared/houseOwnersData';
+import { HouseOwnersData } from 'src/app/shared/types';
 import { environment } from 'src/environments/environment';
 import { TabsService } from 'src/app/services/tabs.service';
 
@@ -15,8 +15,11 @@ export class RentedPage implements OnInit {
   public imageURL = environment.custom.IMAGE_URL;
   public isNotNull: boolean;
 
-  constructor(private modalController: ModalController, private tabsService: TabsService) {
-    this.tabsService.userData.subscribe(res => {
+  constructor(
+    private modalController: ModalController,
+    private tabsService: TabsService
+  ) {
+    this.tabsService.userData.subscribe((res) => {
       if (Object.keys(res).length === 0) {
         this.isNotNull = false;
       } else {
@@ -26,15 +29,13 @@ export class RentedPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async presentModal(sameOwnersData) {
     const modal = await this.modalController.create({
       component: DetailsPage,
-      componentProps: sameOwnersData
+      componentProps: sameOwnersData,
     });
     return await modal.present();
   }
-
 }

@@ -2,7 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 // ****give a value to the SERVER_IP****
-const SERVER_IP = '';
+const SERVER_IP = 'http://localhost:8080';
 export const environment = {
   production: false,
   custom: {
@@ -15,8 +15,8 @@ export const environment = {
 
     IMAGE_URL: SERVER_IP + '/assets/houses/',
     PROFILE_IMAGE_URL: SERVER_IP + '/assets/profiles/',
-    USER_AUTH_DATA: SERVER_IP + '/userAuthData'
-  }
+    USER_AUTH_DATA: SERVER_IP + '/userAuthData',
+  },
 };
 
 /*

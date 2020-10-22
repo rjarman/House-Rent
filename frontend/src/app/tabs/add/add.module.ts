@@ -14,8 +14,8 @@ import { AddPage } from './add.page';
     FormsModule,
     IonicModule,
     AddPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  declarations: [AddPage]
+  declarations: [AddPage],
 })
 export class AddPageModule {}

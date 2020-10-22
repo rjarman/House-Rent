@@ -2,13 +2,14 @@
   <ion-toolbar>
     <ion-title>details</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="dismissModal()"><ion-icon name="close-outline"></ion-icon></ion-button>
+      <ion-button (click)="dismissModal()"
+        ><ion-icon name="close-outline"></ion-icon
+      ></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
   <ion-card>
     <ion-card-header>
       <ion-card-title>Owner Details</ion-card-title>
@@ -16,7 +17,9 @@
     <ion-card-content>
       <p>Owner Name: {{ownerDetails.personal.ownerName}}</p>
       <p>Mobile: {{ownerDetails.personal.mobile1}}</p>
-      <p *ngIf="isEmptyMobile2">Alternative Mobile: {{ownerDetails.personal.mobile2}}</p>
+      <p *ngIf="isEmptyMobile2">
+        Alternative Mobile: {{ownerDetails.personal.mobile2}}
+      </p>
     </ion-card-content>
   </ion-card>
   <ion-card>
@@ -26,7 +29,7 @@
     <ion-card-content>
       <p>Empty Room: {{ownerDetails.details.houseInfo.emptyRoom}}</p>
       <p>Price: {{ownerDetails.details.houseInfo.price}}</p>
-      <p>Description: <br>{{ownerDetails.details.houseInfo.roomDetails}}</p>
+      <p>Description: <br />{{ownerDetails.details.houseInfo.roomDetails}}</p>
     </ion-card-content>
   </ion-card>
   <ion-card>
@@ -35,8 +38,8 @@
     </ion-card-header>
     <ion-card-content>
       <p>
-        {{ownerDetails.details.address.street}}, 
-        {{ownerDetails.details.address.city}}, 
+        {{ownerDetails.details.address.street}},
+        {{ownerDetails.details.address.city}},
         {{ownerDetails.details.address.state}}-{{ownerDetails.details.address.zip}}
       </p>
     </ion-card-content>
@@ -49,17 +52,22 @@
     <ion-card-content>
       <p>Name: {{ownerDetails.details.renterInfo.renterInfo.name}}</p>
       <p>Mobile: {{ownerDetails.details.renterInfo.renterInfo.mobile}}</p>
-      <p>Office Address: {{ownerDetails.details.renterInfo.renterInfo.officeAddress}}</p>
-      <p>Permanent Address: {{ownerDetails.details.renterInfo.renterInfo.permanentAddress}}</p>
+      <p>
+        Office Address:
+        {{ownerDetails.details.renterInfo.renterInfo.officeAddress}}
+      </p>
+      <p>
+        Permanent Address:
+        {{ownerDetails.details.renterInfo.renterInfo.permanentAddress}}
+      </p>
     </ion-card-content>
   </ion-card>
 
   <ion-grid>
     <ion-row>
       <ion-col size="6" *ngFor="let image of ownerDetails.details.imagePath">
-          <img src="{{imagePath + image}}">
+        <img src="{{imagePath + image}}" />
       </ion-col>
     </ion-row>
   </ion-grid>
-
 </ion-content>

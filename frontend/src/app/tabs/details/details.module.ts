@@ -9,12 +9,7 @@ import { DetailsPageRoutingModule } from './details-routing.module';
 import { DetailsPage } from './details.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    DetailsPageRoutingModule
-  ],
-  declarations: [DetailsPage]
+  imports: [CommonModule, FormsModule, IonicModule, DetailsPageRoutingModule],
+  declarations: [DetailsPage],
 })
 export class DetailsPageModule {}

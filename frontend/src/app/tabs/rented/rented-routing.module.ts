@@ -6,8 +6,8 @@ import { RentedPage } from './rented.page';
 const routes: Routes = [
   {
     path: '',
-    component: RentedPage
-  }
+    component: RentedPage,
+  },
 ];
 
 @NgModule({
