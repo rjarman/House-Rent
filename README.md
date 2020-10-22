@@ -33,10 +33,15 @@ This application is targeting the mobile user intends to help the user for house
     npm install
     ```
 
+  - Rename [.env-example](https://github.com/rjarman/House-Rent/blob/master/backend/.env-example) to .env
+  
+  - Edit the **SERVER_IP** and **DATABASE_URL** variables of **_.env-example_** as your choices.
+
   - To run the **server** _(it will run in http://localhost:8080 by default)_:
     ```
     npm run server
     ```
+    <p style="font-size: 10px;text-decoration: underline;font-weight: bold;">N.B. you have to install mongodb and configure mongodb database as mentioned in <a href="https://github.com/rjarman/House-Rent/blob/master/backend/.env-example">.env-example</a> file.</p>
 
 #### Screenshots
 
