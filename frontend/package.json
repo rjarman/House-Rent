@@ -1,8 +1,18 @@
 {
   "name": "house-rent",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "1.0.0",
+  "description": "This application is targeting the mobile user intends to help the user for house renting. A user can find houses or even the owner can post here to rent his or her house.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjarman/House-Rent.git"
+  },
+  "keywords": [],
+  "author": "Rafsun Jany Arman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rjarman/House-Rent/issues"
+  },
+  "homepage": "https://github.com/rjarman/House-Rent#readme",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -59,7 +69,6 @@
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
   },
-  "description": "An Ionic project",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},

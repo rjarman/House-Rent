@@ -1,15 +1,23 @@
 {
-  "name": "house.rent.api",
+  "name": "house-rent",
   "version": "1.0.0",
-  "description": "This API is for House-Rent application",
-  "main": "server.js",
+  "description": "This application is targeting the mobile user intends to help the user for house renting. A user can find houses or even the owner can post here to rent his or her house.",
+  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:server": "nodemon src/server.js",
     "server": "node src/server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjarman/House-Rent.git"
+  },
   "author": "Rafsun Jany Arman",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjarman/House-Rent/issues"
+  },
+  "homepage": "https://github.com/rjarman/House-Rent#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
