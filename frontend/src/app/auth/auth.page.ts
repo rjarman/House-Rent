@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Login } from '../shared/types';
+import { Login } from '../types';
 import { FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-auth',

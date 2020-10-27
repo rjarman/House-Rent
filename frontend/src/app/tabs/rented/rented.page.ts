@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { DetailsPage } from '../details/details.page';
-import { HouseOwnersData } from 'src/app/shared/types';
+import { HouseOwnersData } from 'src/app/types';
 import { environment } from 'src/environments/environment';
 import { TabsService } from 'src/app/services/tabs.service';
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HouseOwnersData } from 'src/app/shared/types';
+import { HouseOwnersData } from 'src/app/types';
 import { environment } from 'src/environments/environment';
 import { TabsService } from 'src/app/services/tabs.service';
 import { Router } from '@angular/router';

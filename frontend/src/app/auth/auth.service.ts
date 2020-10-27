@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Login } from '../shared/types';
+import { Login } from '../types';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
