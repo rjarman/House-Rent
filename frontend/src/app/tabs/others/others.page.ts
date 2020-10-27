@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TabsService } from 'src/app/services/tabs.service';
+import { ServerService } from 'src/app/server.service';
 import { HouseOwnersData } from 'src/app/types';
 import { environment } from 'src/environments/environment';
 import { ModalController } from '@ionic/angular';
@@ -15,7 +15,7 @@ export class OthersPage {
   imageURL = environment.custom.IMAGE_URL;
 
   constructor(
-    private tabsService: TabsService,
+    private tabsService: ServerService,
     private modalController: ModalController
   ) {
     this.tabsService.allData.subscribe((res) => {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TabsService } from '../services/tabs.service';
+import { ServerService } from '../server.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -14,7 +14,7 @@ export class TabsPage implements OnInit {
     image: '',
   };
 
-  constructor(private tabsService: TabsService) {
+  constructor(private tabsService: ServerService) {
     this.tabsService.getProfilePhoto.subscribe((res) => {
       this.userAuthData.userName = res.userName;
       this.userAuthData.email = res.email;

@@ -4,12 +4,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
 import { Subject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { AuthData, HouseOwnersData } from '../shared/types';
+import { AuthData, HouseOwnersData } from './types';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TabsService {
+export class ServerService {
   private userDataEmitter = new Subject<HouseOwnersData>();
   private allDataEmitter = new Subject<HouseOwnersData[]>();
   private userAuthDataEmitter = new Subject<AuthData>();

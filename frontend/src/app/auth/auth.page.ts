@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from './auth.service';
 import { Login } from '../types';
 import { FormBuilder } from '@angular/forms';
 @Component({

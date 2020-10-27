@@ -3,7 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { DetailsPage } from '../details/details.page';
 import { HouseOwnersData } from 'src/app/types';
 import { environment } from 'src/environments/environment';
-import { TabsService } from 'src/app/services/tabs.service';
+import { ServerService } from 'src/app/server.service';
 
 @Component({
   selector: 'app-rented',
@@ -17,7 +17,7 @@ export class RentedPage {
 
   constructor(
     private modalController: ModalController,
-    private tabsService: TabsService
+    private tabsService: ServerService
   ) {
     this.tabsService.userData.subscribe((res) => {
       if (Object.keys(res).length === 0) {

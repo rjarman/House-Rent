@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HouseOwnersData } from 'src/app/types';
 import { environment } from 'src/environments/environment';
-import { TabsService } from 'src/app/services/tabs.service';
+import { ServerService } from 'src/app/server.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ export class SelfPage {
   imageURL = environment.custom.IMAGE_URL;
   isNotNull: boolean;
 
-  constructor(private tabsService: TabsService, private route: Router) {
+  constructor(private tabsService: ServerService, private route: Router) {
     this.tabsService.userData.subscribe((res) => {
       if (Object.keys(res).length === 0) {
         this.isNotNull = false;
