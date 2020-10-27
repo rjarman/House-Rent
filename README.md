@@ -17,6 +17,7 @@ This application is targeting the mobile user intends to help the user for house
 - Use **express** as backend.
 - Design a **Angular** application for mobile.
 - Design tabs for mobile view.
+- Make **android application** using **web** technology.
 - Emit data with **RxJS** after committing certain events.
 - Transfer files from frontend to backend.
 - Make use of **middleware**
