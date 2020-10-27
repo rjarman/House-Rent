@@ -10,6 +10,21 @@ This application is targeting the mobile user intends to help the user for house
 - Show explanation of houses and owners every detail on the details links.
 - Make a platform for selling or renting houses for both owner and customer.
 
+#### Technical Challenges
+
+- Design a common database and connects all the users to it.
+- Make a **NoSQL** database with **mongodb** without using _mongoose_.
+- Use **express** as backend.
+- Design a **Angular** application for mobile.
+- Design tabs for mobile view.
+- Emit data with **RxJS** after committing certain events.
+- Transfer files from frontend to backend.
+- Make use of **middleware**
+
+#### Disadvantages
+
+- This application is not built for design purpose.
+
 #### Installation and Run
 
 - [Frontend](https://github.com/rjarman/House-Rent/tree/master/frontend)
@@ -20,9 +35,15 @@ This application is targeting the mobile user intends to help the user for house
     npm install
     ```
 
-  - To run the **application** _(it will run in http://localhost:4200 by default)_:
+  - To run on **development** mode _(it will run in http://localhost:4200 by default)_:
+
     ```
     npm run start
+    ```
+
+  - To build on **production** mode _(it will run in http://localhost:4200 by default)_:
+    ```
+    npm run build
     ```
 
 - [Backend](https://github.com/rjarman/House-Rent/tree/master/backend)
@@ -37,11 +58,17 @@ This application is targeting the mobile user intends to help the user for house
 
   - Edit the **SERVER_IP** and **DATABASE_URL** variables of **_.env-example_** as your choices.
 
-  - To run the **server** _(it will run in http://localhost:8080 by default)_:
+  - To run **development server** _(it will run in http://localhost:3000 by default)_:
+
+    ```
+    npm run dev:server
+    ```
+
+  - To run **server** _(it will run in http://localhost:3000 by default)_:
     ```
     npm run server
     ```
-    <u>**N.B. you have to install mongodb and configure mongodb database as mentioned in ***[.env-example](https://github.com/rjarman/House-Rent/blob/master/backend/.env-example)*** file.**</u>
+    <u>**N.B. you have to install mongodb and configure mongodb database as mentioned in \***[.env-example](https://github.com/rjarman/House-Rent/blob/master/backend/.env-example)**\* file.**</u>
 
 #### Screenshots
 
