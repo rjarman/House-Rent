@@ -1,9 +1,5 @@
-const mongdb = require('mongodb');
-const credentials = require('dotenv');
-credentials.config();
-
-const mongodbClient = mongdb.MongoClient;
-// let a = {};
+require('dotenv').config();
+const mongodbClient = require('mongodb').MongoClient;
 
 const databaseFunction = {
   clientCloser: null,
@@ -60,14 +56,12 @@ function sendData(databaseName, collectionName, data) {
           );
         }
       });
-      // client.close();
       databaseFunction.clientCloser = client;
     }
   );
 }
 
 function findData(databaseName, collectionName, key) {
-  // var data ;
   mongodbClient.connect(
     process.env.DATABASE_URL,
     { useNewUrlParser: true, useUnifiedTopology: true },
@@ -86,19 +80,15 @@ function findData(databaseName, collectionName, key) {
         if (err) {
           console.log(err);
           console.log(`"${key}" doesn't match with the API key!`);
-          // return false;
         } else {
           console.log(`"${key}" successfully matched!`);
-          // console.log(JSON.stringify(result));
           result.forEach((element) => {
             databaseFunction.a = Object.create(element);
           });
         }
       });
-      // client.close();
     }
   );
-  // return a;
 }
 
 module.exports = databaseFunction;

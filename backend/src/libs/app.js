@@ -8,16 +8,12 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 var formidable = require('formidable');
-var fs = require('fs');
-const mongdb = require('mongodb');
-const mongodbClient = mongdb.MongoClient;
+const mongodbClient = require('mongodb').MongoClient;
 require('dotenv').config();
 
-const encryption_decryption = require('../miscellaneous/encryption');
-const databaseFunction = require('../models/db');
-const dataStructure = require('../constants/dataStructure');
+const encryption_decryption = require('./encryption');
+const databaseFunction = require('./db');
 
 const app = express();
 
@@ -39,35 +35,14 @@ app.get('/', (req, res) => {
 });
 
 app.use(
-  cors({
+  require('cors')({
     origin: '*',
     credentials: true,
   })
 );
 
-var publicDir = require('path').join(__dirname, '../public/');
-// console.log(__dirname);
+const publicDir = require('path').join(__dirname, '../public/');
 app.use(express.static(publicDir));
-
-// ****************************************************
-// *                                                  *
-// *                                                  *
-// *                        API VALIDATOR             *
-// *                                                  *
-// *                                                  *
-// ****************************************************
-
-// app.use((req, res, next) => {
-//     const apiKey = req.body.api_key;
-//     if(databaseFunction.apiValidatorFireFree(apiKey) || databaseFunction.apiValidatorHomie(apiKey)){
-//         next();
-//     }else {
-//         res.status(400).json({
-//             status: "failed",
-//             response: `${apiKey} doesn't match!`
-//         });
-//     }
-// });
 
 // ****************************************************
 // *                                                  *
@@ -80,17 +55,12 @@ app.use(express.static(publicDir));
 app.post('/register', (req, res, next) => {
   let count;
   userInfo = {};
-  console.log(req.body);
-  // let data = {
-  //     email: req.body.email
-  // }
   var form = new formidable.IncomingForm();
   form.parse(req);
   form.on('fileBegin', (name, file) => {
     count = 0;
     file.path = `${__dirname}/../public/assets/profiles/${file.name}`;
   });
-  // console.log(path);
   form.on('field', (fieldName, fieldValue, file) => {
     if (fieldName === 'userName') {
       Object.assign(userInfo, { userName: JSON.parse(fieldValue) });
@@ -102,20 +72,15 @@ app.post('/register', (req, res, next) => {
       Object.assign(userInfo, { image: JSON.parse(fieldValue) });
     }
     if (Object.keys(userInfo).length === 4 && count === 0) {
-      console.log(userInfo);
-
-      // console.log(req.body);
       let data = {
         userName: userInfo.userName,
         email: userInfo.email,
         password: JSON.stringify(
-          encryption_decryption.encrytion(userInfo.password)
+          encryption_decryption.encryption(userInfo.password)
         ),
         image: userInfo.image[0],
       };
       databaseFunction.doRegister(data);
-      console.log(req.body.email);
-
       res.status(201).json({
         email: userInfo.email,
         status: 'ok',
@@ -164,7 +129,6 @@ app.post('/login', (req, res, next) => {
       collection.find({ email: { $eq: data.email } }).toArray((err, result) => {
         if (err) {
           console.log(`"${data.email}" doesn't match with the API key!`);
-          // return false;
         } else {
           console.log(`"${data.email}" successfully matched!`);
           if (
@@ -184,7 +148,6 @@ app.post('/login', (req, res, next) => {
           }
         }
       });
-      // client.close();
     }
   );
 });
@@ -204,16 +167,12 @@ app.post('/addUserData', (req, res, next) => {
   address = {};
   email = {};
   imagePath = {};
-  // let data = {
-  //     email: req.body.email
-  // }
   var form = new formidable.IncomingForm();
   form.parse(req);
   form.on('fileBegin', (name, file) => {
     count = 0;
     file.path = `${__dirname}/../public/assets/houses/${file.name}`;
   });
-  // console.log(path);
   form.on('field', (fieldName, fieldValue, file) => {
     if (fieldName === 'ownerInfo') {
       Object.assign(ownerInfo, JSON.parse(fieldValue));
@@ -227,13 +186,10 @@ app.post('/addUserData', (req, res, next) => {
       Object.assign(ownerInfo, { imagePath: JSON.parse(fieldValue) });
     } else if (fieldName === 'isChecked') {
       Object.assign(ownerInfo, { isChecked: JSON.parse(fieldValue) });
-      console.log(JSON.parse(fieldValue));
     } else if (fieldName === 'renterInfo') {
       Object.assign(ownerInfo, { renterInfo: JSON.parse(fieldValue) });
-      console.log(JSON.parse(fieldValue));
     }
     if (Object.keys(ownerInfo).length >= 11 && count === 0) {
-      console.log(ownerInfo);
       mongodbClient.connect(
         process.env.DATABASE_URL,
         { useNewUrlParser: true, useUnifiedTopology: true },
@@ -358,19 +314,13 @@ app.post('/updateUserData', (req, res, next) => {
   email = {};
   imagePath = {};
   tempOldData = {};
-  // let data = {
-  //     email: req.body.email
-  // }
   var form = new formidable.IncomingForm();
   form.parse(req);
   form.on('fileBegin', (name, file) => {
     file.path = `${__dirname}/../public/assets/houses/${file.name}`;
   });
-  // console.log(path);
   count = 0;
   form.on('field', (fieldName, fieldValue, file) => {
-    // console.log('filedName ==> ' + fieldName);
-    // console.log('value ==> ' + fieldValue);
     if (fieldName === 'ownerInfo') {
       Object.assign(ownerInfo, JSON.parse(fieldValue));
     } else if (fieldName === 'houseInfo') {
@@ -387,18 +337,12 @@ app.post('/updateUserData', (req, res, next) => {
       Object.assign(ownerInfo, { renterInfo: JSON.parse(fieldValue) });
     } else if (fieldName === 'tempOldData') {
       Object.assign(tempOldData, JSON.parse(fieldValue));
-      // console.log(tempOldData);
-      // console.log(ownerInfo);
     }
-    // console.log(Object.keys(ownerInfo).length);
-    // console.log(tempOldData);
     if (
       Object.keys(ownerInfo).length >= 14 &&
       count === 0 &&
       Object.keys(tempOldData).length > 0
     ) {
-      console.log(ownerInfo);
-      // console.log(tempOldData);
       mongodbClient.connect(
         process.env.DATABASE_URL,
         { useNewUrlParser: true, useUnifiedTopology: true },
@@ -425,7 +369,6 @@ app.post('/updateUserData', (req, res, next) => {
               } else {
                 result.forEach((res) => {
                   res.ownerInfo.forEach((res2) => {
-                    // console.log(tempOldData);
                     if (
                       res2.personal.ownerName ===
                         tempOldData.ownerInfo.ownerName &&
@@ -458,16 +401,10 @@ app.post('/updateUserData', (req, res, next) => {
                         },
                       };
                       index = res.ownerInfo.indexOf(res2);
-                      console.log(index);
                       res.ownerInfo[index] = data;
-                      console.log(res.ownerInfo[index]);
                     }
-                    // console.log(res.ownerInfo.indexOf(res2));
-                    // console.log(res2);
                   });
-                  console.log(res.ownerInfo);
                 });
-                console.log(result);
                 collection.deleteOne({ email: { $eq: result[0].email } });
                 databaseFunction.sendDataOwners(result[0]);
               }
@@ -495,7 +432,32 @@ app.post('/updateUserData', (req, res, next) => {
 // ****************************************************
 
 app.post('/allData', (req, res, next) => {
-  const data = dataStructure;
+  const data = {
+    id: '',
+    email: '',
+    ownerInfo: [],
+    ownerInfoArrayData: {
+      personal: {
+        ownerName: '',
+        mobile1: '',
+        mobile2: '',
+      },
+      details: {
+        imagePath: [''],
+        houseInfo: {
+          emptyRoom: '',
+          roomDetails: '',
+          price: '',
+        },
+        address: {
+          street: '',
+          city: '',
+          state: '',
+          zip: '',
+        },
+      },
+    },
+  };
   const dataArray = [];
 
   mongodbClient.connect(
@@ -520,9 +482,7 @@ app.post('/allData', (req, res, next) => {
           if (err) {
             console.log(err);
             console.log(`"${req.body.email}" doesn't match with the API key!`);
-            // return false;
           } else {
-            // console.log(`"${req.body.email}" successfully matched!`);
             result.forEach((element) => {
               data.id = element._id;
               data.email = element.email;
@@ -549,7 +509,32 @@ app.post('/allData', (req, res, next) => {
 // ****************************************************
 
 app.post('/userData', (req, res, next) => {
-  const data = dataStructure;
+  const data = {
+    id: '',
+    email: '',
+    ownerInfo: [],
+    ownerInfoArrayData: {
+      personal: {
+        ownerName: '',
+        mobile1: '',
+        mobile2: '',
+      },
+      details: {
+        imagePath: [''],
+        houseInfo: {
+          emptyRoom: '',
+          roomDetails: '',
+          price: '',
+        },
+        address: {
+          street: '',
+          city: '',
+          state: '',
+          zip: '',
+        },
+      },
+    },
+  };
   const dataArray = [];
 
   mongodbClient.connect(
@@ -574,9 +559,7 @@ app.post('/userData', (req, res, next) => {
           if (err) {
             console.log(err);
             console.log(`"${req.body.email}" doesn't match with the API key!`);
-            // return false;
           } else {
-            // console.log(`"${req.body.email}" successfully matched!`);
             console.log(result);
             result.forEach((element) => {
               data.id = element._id;
@@ -590,7 +573,6 @@ app.post('/userData', (req, res, next) => {
             });
           }
         });
-      // client.close();
     }
   );
 });
@@ -620,20 +602,13 @@ app.post('/userAuthData', (req, res, next) => {
       collection
         .find({ email: { $eq: req.body.email } })
         .toArray((err, result) => {
-          console.log(result);
-          console.log(req.body.email);
           if (err) {
             console.log(err);
             console.log(`"${req.body.email}" doesn't match with the API key!`);
-            // return false;
           } else if (Object.keys(result).length > 0) {
-            // console.log(`"${req.body.email}" successfully matched!`);
-            // console.log(result);
             data.userName = result[0].userName;
             data.email = result[0].email;
             data.image = result[0].image;
-            // console.log(data)
-
             res.status(200).json({
               status: 'success',
               data: data,
@@ -645,23 +620,5 @@ app.post('/userAuthData', (req, res, next) => {
     }
   );
 });
-
-// ****************************************************
-// *                                                  *
-// *                                                  *
-// *                        SYSTEM                    *
-// *                                                  *
-// *                                                  *
-// ****************************************************
-
-// process.on('exit', (code) => {
-//     databaseFunction.clientCloser.close();
-//     console.log(`exit on status: '${code}'`);
-// });
-
-// process.on('SIGINT', () => {
-//     console.log("interrupted by external signal!");
-//     process.exit();
-// });
 
 module.exports = app;

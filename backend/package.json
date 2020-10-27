@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon server.js"
+    "dev:server": "nodemon src/server.js",
+    "server": "node src/server.js"
   },
   "author": "Rafsun Jany Arman",
   "license": "ISC",
