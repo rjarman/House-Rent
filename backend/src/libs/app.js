@@ -41,7 +41,7 @@ app.use(
   })
 );
 
-const publicDir = require('path').join(__dirname, '../public/');
+const publicDir = require('path').join(__dirname, '../../public/');
 app.use(express.static(publicDir));
 
 // ****************************************************
@@ -560,7 +560,6 @@ app.post('/userData', (req, res, next) => {
             console.log(err);
             console.log(`"${req.body.email}" doesn't match with the API key!`);
           } else {
-            console.log(result);
             result.forEach((element) => {
               data.id = element._id;
               data.email = element.email;

@@ -2,7 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 // ****give a value to the SERVER_IP****
-const SERVER_IP = 'http://localhost:8080';
+const SERVER_IP = 'http://localhost:3000';
 export const environment = {
   production: false,
   custom: {
