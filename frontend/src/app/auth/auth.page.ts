@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { Login } from '../shared/types';
 import { FormBuilder } from '@angular/forms';
 @Component({
@@ -9,11 +7,10 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './auth.page.html',
   styleUrls: ['./auth.page.scss'],
 })
-export class AuthPage implements OnInit {
-  public isRegistered: boolean;
-
+export class AuthPage {
   private profilePhoto: any;
 
+  isRegistered: boolean;
   loginForm = this.formBuilder.group({
     email: [''],
     password: [''],
@@ -30,21 +27,24 @@ export class AuthPage implements OnInit {
   ) {
     this.isRegistered = false;
   }
-  ngOnInit() {}
-  public toRegister() {
+
+  toRegister() {
     this.isRegistered = false;
   }
-  public toLogin() {
+
+  toLogin() {
     this.isRegistered = true;
   }
-  public checkLogin() {
+
+  checkLogin() {
     const loginData: Login = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
     };
     this.authService.login(loginData);
   }
-  public checkRegister() {
+
+  checkRegister() {
     this.authService.register(this.registerForm, this.profilePhoto);
   }
 

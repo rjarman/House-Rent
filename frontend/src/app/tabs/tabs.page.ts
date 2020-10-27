@@ -8,12 +8,11 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
-  public userAuthData = {
+  userAuthData = {
     userName: '',
     email: '',
     image: '',
   };
-  // public PROFILE_IMAGE_URL = environment.custom.PROFILE_IMAGE_URL;
 
   constructor(private tabsService: TabsService) {
     this.tabsService.getProfilePhoto.subscribe((res) => {
@@ -36,10 +35,5 @@ export class TabsPage implements OnInit {
 
   refresh() {
     this.tabsService.refresh();
-    // this.tabsService.userData.subscribe(res => {
-    //     this.userData = res;
-    //   });
-
-    // console.log(this.userData);
   }
 }

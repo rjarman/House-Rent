@@ -6,7 +6,6 @@
     </ion-button>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
   <form
     [formGroup]="addForm"
@@ -67,7 +66,6 @@
         </div>
       </ion-card-content>
     </ion-card>
-
     <ion-card>
       <ion-card-header> Address </ion-card-header>
       <ion-card-content>
@@ -84,12 +82,10 @@
             <ion-label position="floating">City</ion-label>
             <ion-input type="text" formControlName="city" required></ion-input>
           </ion-item>
-
           <ion-item>
             <ion-label position="floating">State</ion-label>
             <ion-input type="text" formControlName="state" required></ion-input>
           </ion-item>
-
           <ion-item>
             <ion-label position="floating">Zip Code</ion-label>
             <ion-input type="text" formControlName="zip" required></ion-input>
@@ -97,7 +93,6 @@
         </div>
       </ion-card-content>
     </ion-card>
-
     <ion-card>
       <ion-card-header> Renter Info </ion-card-header>
       <ion-card-content>
@@ -112,7 +107,6 @@
           ></ion-checkbox>
           <ion-label>Is this house rented ?</ion-label>
         </ion-item>
-
         <div *ngIf="isRanted" formGroupName="renterInfo">
           <ion-item>
             <ion-label position="floating">Name</ion-label>
@@ -126,7 +120,6 @@
               required
             ></ion-input>
           </ion-item>
-
           <ion-item>
             <ion-label position="floating">Office Address</ion-label>
             <ion-input
@@ -135,7 +128,6 @@
               required
             ></ion-input>
           </ion-item>
-
           <ion-item>
             <ion-label position="floating">Permanent Address</ion-label>
             <ion-input
@@ -147,7 +139,6 @@
         </div>
       </ion-card-content>
     </ion-card>
-
     <ion-card>
       <ion-card-header> Images </ion-card-header>
       <ion-card-content>
@@ -161,7 +152,6 @@
         ></ion-input>
       </ion-card-content>
     </ion-card>
-
     <ion-grid *ngIf="isImage">
       <ion-row>
         <ion-col size="6" *ngFor="let image of imageArray">
@@ -169,7 +159,6 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-
     <ng-template #notUpdate>
       <ion-button
         expand="full"

@@ -1,5 +1,3 @@
-// import { HouseData } from './houseData';
-
 export interface AuthData {
   userName: string;
   email: string;

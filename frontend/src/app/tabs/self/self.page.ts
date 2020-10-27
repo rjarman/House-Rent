@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HouseOwnersData } from 'src/app/shared/types';
 import { environment } from 'src/environments/environment';
 import { TabsService } from 'src/app/services/tabs.service';
@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
   templateUrl: './self.page.html',
   styleUrls: ['./self.page.scss'],
 })
-export class SelfPage implements OnInit {
-  public userData: HouseOwnersData;
-  public imageURL = environment.custom.IMAGE_URL;
-  public isNotNull: boolean;
+export class SelfPage {
+  userData: HouseOwnersData;
+  imageURL = environment.custom.IMAGE_URL;
+  isNotNull: boolean;
 
   constructor(private tabsService: TabsService, private route: Router) {
     this.tabsService.userData.subscribe((res) => {
@@ -24,8 +24,6 @@ export class SelfPage implements OnInit {
       }
     });
   }
-
-  ngOnInit() {}
 
   onClick(sameOwnersData) {
     this.route.navigate(['tabs/add', JSON.stringify(sameOwnersData)]);

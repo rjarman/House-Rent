@@ -10,12 +10,12 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
-  public imageArray: any;
-  public isImage: boolean;
-  public isUpdate: boolean;
-  public isRanted: boolean;
-  public imagePath = environment.custom.IMAGE_URL;
-  public checkedIt;
+  imageArray: any;
+  isImage: boolean;
+  isUpdate: boolean;
+  isRanted: boolean;
+  imagePath = environment.custom.IMAGE_URL;
+  checkedIt;
 
   addForm = this.fromBuilder.group({
     ownerInfo: this.fromBuilder.group({
@@ -58,7 +58,6 @@ export class AddPage implements OnInit {
   ngOnInit() {
     this.activatedRouter.params.subscribe((params) => {
       if (Object.keys(params).length > 0) {
-        // this.retriveData = JSON.parse(params.sameOwnersData);
         this.addForm
           .get('ownerInfo.ownerName')
           .setValue(JSON.parse(params.sameOwnersData).personal.ownerName);
@@ -98,7 +97,6 @@ export class AddPage implements OnInit {
           .setValue(
             JSON.parse(params.sameOwnersData).details.renterInfo.isChecked
           );
-
         this.addForm
           .get('renterInfo.name')
           .setValue(
@@ -122,8 +120,6 @@ export class AddPage implements OnInit {
             JSON.parse(params.sameOwnersData).details.renterInfo.renterInfo
               .permanentAddress
           );
-
-        // console.log(JSON.parse(params.sameOwnersData).details.renterInfo.isChecked);
         if (
           JSON.parse(params.sameOwnersData).details.renterInfo.isChecked ===
           true
@@ -152,14 +148,7 @@ export class AddPage implements OnInit {
       this.databaseService.addOtherData = this.addForm;
       this.databaseService.updateUserFormToDatabase();
       this.route.navigate(['/tabs']);
-
-      // console.log(JSON.parse(localStorage.getItem('tempOldData')));
-      // console.log(this.addForm);
-      // update
     }
-    // this.databaseService.addUserFormToDatabase = this.addForm;
-    // this.addForm.setValue({images : this.imageArray});
-    // console.log(this.addForm);
   }
 
   setImages(event) {

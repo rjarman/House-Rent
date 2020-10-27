@@ -17,9 +17,10 @@ export class DatabaseService {
     private route: Router
   ) {}
 
-  public addUserFormToDatabase() {
+  addUserFormToDatabase() {
     const tempFormData = new FormData();
     const img = [];
+    // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.imageArray.length; i++) {
       img.push(this.imageArray[i].name);
       tempFormData.append('images', this.imageArray[i]);
@@ -64,9 +65,10 @@ export class DatabaseService {
       });
   }
 
-  public updateUserFormToDatabase() {
+  updateUserFormToDatabase() {
     const tempFormData = new FormData();
     const img = [];
+    // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.imageArray.length; i++) {
       img.push(this.imageArray[i].name);
       tempFormData.append('images', this.imageArray[i]);

@@ -10,9 +10,9 @@ import { AuthData, HouseOwnersData } from '../shared/types';
   providedIn: 'root',
 })
 export class TabsService {
-  private _userdata = new Subject<HouseOwnersData>();
-  private _allData = new Subject<HouseOwnersData[]>();
-  private userAuthData = new Subject<AuthData>();
+  private userDataEmitter = new Subject<HouseOwnersData>();
+  private allDataEmitter = new Subject<HouseOwnersData[]>();
+  private userAuthDataEmitter = new Subject<AuthData>();
 
   constructor(
     private httpClient: HttpClient,
@@ -29,7 +29,7 @@ export class TabsService {
           { observe: 'response' }
         )
         .subscribe((response) => {
-          this._allData.next(response.body.data);
+          this.allDataEmitter.next(response.body.data);
         });
     }
   }
@@ -42,17 +42,17 @@ export class TabsService {
           { observe: 'response' }
         )
         .subscribe((response) => {
-          this._userdata.next(response.body.data);
+          this.userDataEmitter.next(response.body.data);
         });
     }
   }
   get userData(): Observable<HouseOwnersData> {
     this.getLoggedData();
-    return this._userdata.asObservable();
+    return this.userDataEmitter.asObservable();
   }
   get allData(): Observable<HouseOwnersData[]> {
     this.getAllData();
-    return this._allData.asObservable();
+    return this.allDataEmitter.asObservable();
   }
   get getProfilePhoto(): Observable<AuthData> {
     this.httpClient
@@ -62,10 +62,10 @@ export class TabsService {
         { observe: 'response' }
       )
       .subscribe((response) => {
-        this.userAuthData.next(response.body.data);
+        this.userAuthDataEmitter.next(response.body.data);
       });
 
-    return this.userAuthData.asObservable();
+    return this.userAuthDataEmitter.asObservable();
   }
 
   refresh() {

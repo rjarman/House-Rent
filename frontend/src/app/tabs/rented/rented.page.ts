@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { DetailsPage } from '../details/details.page';
 import { HouseOwnersData } from 'src/app/shared/types';
@@ -10,10 +10,10 @@ import { TabsService } from 'src/app/services/tabs.service';
   templateUrl: './rented.page.html',
   styleUrls: ['./rented.page.scss'],
 })
-export class RentedPage implements OnInit {
-  public userData: HouseOwnersData;
-  public imageURL = environment.custom.IMAGE_URL;
-  public isNotNull: boolean;
+export class RentedPage {
+  userData: HouseOwnersData;
+  imageURL = environment.custom.IMAGE_URL;
+  isNotNull: boolean;
 
   constructor(
     private modalController: ModalController,
@@ -28,8 +28,6 @@ export class RentedPage implements OnInit {
       }
     });
   }
-
-  ngOnInit() {}
 
   async presentModal(sameOwnersData) {
     const modal = await this.modalController.create({

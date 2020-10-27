@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 
@@ -7,11 +7,11 @@ import { environment } from 'src/environments/environment';
   templateUrl: './details.page.html',
   styleUrls: ['./details.page.scss'],
 })
-export class DetailsPage implements OnInit {
+export class DetailsPage {
   isEmptyMobile2 = false;
   imagePath = environment.custom.IMAGE_URL;
 
-  public ownerDetails = {
+  ownerDetails = {
     personal: {
       ownerName: '',
       mobile1: '',
@@ -68,10 +68,6 @@ export class DetailsPage implements OnInit {
     if (this.ownerDetails.personal.mobile2 !== '') {
       this.isEmptyMobile2 = true;
     }
-  }
-
-  ngOnInit() {
-    // console.log(this.ownerDetails);
   }
 
   dismissModal() {

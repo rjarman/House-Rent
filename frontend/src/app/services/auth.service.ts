@@ -15,9 +15,10 @@ export class AuthService {
     private route: Router
   ) {}
 
-  public register(registerForm: any, profilePhoto: any) {
+  register(registerForm: any, profilePhoto: any) {
     const tempFormData = new FormData();
     const img = [];
+    // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < profilePhoto.length; i++) {
       img.push(profilePhoto[i].name);
       tempFormData.append('images', profilePhoto[i]);
@@ -54,8 +55,7 @@ export class AuthService {
       });
   }
 
-  public addUserFormToDatabase() {}
-  public login(loginData: Login) {
+  login(loginData: Login) {
     this.httpClient
       .post<{ email; status }>(environment.custom.LOGIN_URL, loginData, {
         observe: 'response',
@@ -90,4 +90,3 @@ export class AuthService {
       });
   }
 }
-// armanrafsunjany@gmail.com

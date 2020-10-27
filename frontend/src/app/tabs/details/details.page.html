@@ -8,7 +8,6 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
   <ion-card>
     <ion-card-header>
@@ -44,7 +43,6 @@
       </p>
     </ion-card-content>
   </ion-card>
-
   <ion-card *ngIf="ownerDetails.details.renterInfo.isChecked">
     <ion-card-header>
       <ion-card-title>Renter Info</ion-card-title>
@@ -62,7 +60,6 @@
       </p>
     </ion-card-content>
   </ion-card>
-
   <ion-grid>
     <ion-row>
       <ion-col size="6" *ngFor="let image of ownerDetails.details.imagePath">
