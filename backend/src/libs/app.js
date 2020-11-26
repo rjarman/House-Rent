@@ -59,7 +59,7 @@ app.post('/register', (req, res, next) => {
   form.parse(req);
   form.on('fileBegin', (name, file) => {
     count = 0;
-    file.path = `${__dirname}/../public/assets/profiles/${file.name}`;
+    file.path = require('path').join(publicDir, `assets/profiles/${file.name}`)
   });
   form.on('field', (fieldName, fieldValue, file) => {
     if (fieldName === 'userName') {
@@ -171,7 +171,7 @@ app.post('/addUserData', (req, res, next) => {
   form.parse(req);
   form.on('fileBegin', (name, file) => {
     count = 0;
-    file.path = `${__dirname}/../public/assets/houses/${file.name}`;
+    file.path = require('path').join(publicDir, `assets/houses/${file.name}`)
   });
   form.on('field', (fieldName, fieldValue, file) => {
     if (fieldName === 'ownerInfo') {
@@ -317,7 +317,7 @@ app.post('/updateUserData', (req, res, next) => {
   var form = new formidable.IncomingForm();
   form.parse(req);
   form.on('fileBegin', (name, file) => {
-    file.path = `${__dirname}/../public/assets/houses/${file.name}`;
+    file.path = require('path').join(publicDir, `assets/houses/${file.name}`)
   });
   count = 0;
   form.on('field', (fieldName, fieldValue, file) => {
